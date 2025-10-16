@@ -300,7 +300,7 @@
 
     #define LCD_STR_SPECIAL_MAX '\x09'
     // Maximum here is 0x1F because 0x20 is ' ' (space) and the normal charsets begin.
-    // Better stay below 0x10 because DISPLAY_CHARSET_HD44780_WESTERN begins here.
+    // Better stay below 0x10
 
     // Symbol characters
     #define LCD_STR_FILAM_DIA   "\xf8"

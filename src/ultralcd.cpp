@@ -25,8 +25,7 @@
 #if ENABLED(ULTRA_LCD)
 
 #include "ultralcd.h"
-#include "Marlin.h"
-#include "language.h"
+#include "ultralcd_impl_DOGM.h"
 #include "cardreader.h"
 #include "temperature.h"
 #include "planner.h"
@@ -52,11 +51,15 @@
   bool ubl_lcd_map_control = false;
 #endif
 
-int sdcard_pause_yes = 0;
-bool sdcard_pause_check = true;
+static int sdcard_pause_yes = 0;
+static bool sdcard_pause_check = true;
 
 // Initialized by settings.load()
 int16_t lcd_preheat_hotend_temp[2], lcd_preheat_bed_temp[2], lcd_preheat_fan_speed[2];
+
+#if ENABLED(DOGLCD)
+  extern U8GLIB *u8g_ptr;
+#endif
 
 #if ENABLED(FILAMENT_LCD_DISPLAY) && ENABLED(SDSUPPORT)
   millis_t previous_lcd_status_ms = 0;
@@ -78,14 +81,24 @@ char lcd_status_message[3 * (LCD_WIDTH) + 1] = WELCOME_MSG; // worst case is kan
   uint8_t status_scroll_pos = 0;
 #endif
 
-#if ENABLED(DOGLCD)
-  #include "ultralcd_impl_DOGM.h"
-  #include <U8glib-HAL.h>
-#else
-  #include "ultralcd_impl_HD44780.h"
-#endif
-
 #if ENABLED(ULTIPANEL)
+  // Macros for specific types of menu items
+  #define lcd_implementation_drawmenu_back(sel, row, pstr, dummy) lcd_implementation_drawmenu_generic(sel, row, pstr, LCD_STR_UPLEVEL[0], LCD_STR_UPLEVEL[0])
+  #define lcd_implementation_drawmenu_submenu(sel, row, pstr, data) lcd_implementation_drawmenu_generic(sel, row, pstr, '>', LCD_STR_ARROW_RIGHT[0])
+  #define lcd_implementation_drawmenu_gcode(sel, row, pstr, gcode) lcd_implementation_drawmenu_generic(sel, row, pstr, '>', ' ')
+  #define lcd_implementation_drawmenu_function(sel, row, pstr, data) lcd_implementation_drawmenu_generic(sel, row, pstr, '>', ' ')
+
+  // Macros for edit items
+  #define lcd_implementation_drawmenu_setting_edit_generic(sel, row, pstr, data) drawmenu_setting_edit_generic(sel, row, pstr, data, false)
+  #define lcd_implementation_drawmenu_setting_edit_generic_P(sel, row, pstr, data) drawmenu_setting_edit_generic(sel, row, pstr, data, true)
+  #define DRAWMENU_SETTING_EDIT_GENERIC(_src) lcd_implementation_drawmenu_setting_edit_generic(sel, row, pstr, _src)
+  #define DRAW_BOOL_SETTING(sel, row, pstr, data) lcd_implementation_drawmenu_setting_edit_generic_P(sel, row, pstr, (*(data))?PSTR(MSG_ON):PSTR(MSG_OFF))
+
+  #if ENABLED(SDSUPPORT)
+    #define lcd_implementation_drawmenu_sdfile(sel, row, pstr, filename, longFilename) lcd_implementation_drawmenu_sd(sel, row, pstr, filename, longFilename, false)
+    #define lcd_implementation_drawmenu_sddirectory(sel, row, pstr, filename, longFilename) lcd_implementation_drawmenu_sd(sel, row, pstr, filename, longFilename, true)
+  #endif
+
   #define DEFINE_LCD_IMPLEMENTATION_DRAWMENU_SETTING_EDIT_TYPE(_type, _name, _strFunc) \
     inline void lcd_implementation_drawmenu_setting_edit_ ## _name (const bool sel, const uint8_t row, const char* pstr, const char* pstr2, _type * const data, ...) { \
       UNUSED(pstr2); \
@@ -697,10 +710,10 @@ void kill_screen(const char* lcd_msg) {
   lcd_init();
   lcd_setalertstatusPGM(lcd_msg);
   #if ENABLED(DOGLCD)
-    u8g.firstPage();
+    u8g_ptr->firstPage();
     do {
       lcd_kill_screen();
-    } while (u8g.nextPage());
+    } while (u8g_ptr->nextPage());
   #else
     lcd_kill_screen();
   #endif
@@ -714,9 +727,7 @@ void kill_screen(const char* lcd_msg) {
    *
    */
   void lcd_buzz(long duration, uint16_t freq) {
-    #if ENABLED(LCD_USE_I2C_BUZZER)
-      lcd.buzz(duration, freq);
-    #elif PIN_EXISTS(BEEPER)
+    #if PIN_EXISTS(BEEPER)
       buzzer.tone(duration, freq);
     #else
       UNUSED(duration); UNUSED(freq);
@@ -778,7 +789,7 @@ void kill_screen(const char* lcd_msg) {
       #if ENABLED(PARK_HEAD_ON_PAUSE)
         enqueue_and_echo_commands_P(PSTR("M125"));
       #endif
-      lcd_setstatusPGM(PSTR(MSG_PRINT_PAUSED), -1);
+      lcd_setstatusPGM(msg_print_paused(), -1);
     }
 
     void lcd_sdcard_resume() 
@@ -857,7 +868,7 @@ void kill_screen(const char* lcd_msg) {
         for (uint8_t i = 0; i < FAN_COUNT; i++) fanSpeeds[i] = 0;
       #endif
       wait_for_heatup = false;
-      lcd_setstatusPGM(PSTR(MSG_PRINT_ABORTED), -1);
+      lcd_setstatusPGM(msg_print_aborted(), -1);
       lcd_return_to_status();
     }
 
@@ -932,31 +943,6 @@ void kill_screen(const char* lcd_msg) {
     }
 
   #endif // BLTOUCH
-
-  #if ENABLED(LCD_PROGRESS_BAR_TEST)
-
-    static void progress_bar_test() {
-      static int8_t bar_percent = 0;
-      if (lcd_clicked) {
-        lcd_goto_previous_menu();
-        lcd_set_custom_characters(false);
-        return;
-      }
-      bar_percent += (int8_t)encoderPosition;
-      bar_percent = constrain(bar_percent, 0, 100);
-      encoderPosition = 0;
-      lcd_implementation_drawmenu_static(0, msg_progress_bar_test(), true, true);
-      lcd.setCursor((LCD_WIDTH) / 2 - 2, LCD_HEIGHT - 2);
-      lcd.print(itostr3(bar_percent)); lcd.write('%');
-      lcd.setCursor(0, LCD_HEIGHT - 1); lcd_draw_progress_bar(bar_percent);
-    }
-
-    void _progress_bar_test() {
-      lcd_goto_screen(progress_bar_test);
-      lcd_set_custom_characters();
-    }
-
-  #endif // LCD_PROGRESS_BAR_TEST
 
   #if HAS_DEBUG_MENU
 
@@ -1208,15 +1194,15 @@ void kill_screen(const char* lcd_msg) {
           #endif
 
           // Draw a representation of the nozzle
-          if (PAGE_CONTAINS(3, 16))  u8g.drawBitmapP(nozzle + 6, 4 - dir, 2, 12, nozzle_bmp);
-          if (PAGE_CONTAINS(20, 20)) u8g.drawBitmapP(nozzle + 0, 20, 3, 1, offset_bedline_bmp);
+          if (PAGE_CONTAINS(3, 16))  u8g_ptr->drawBitmapP(nozzle + 6, 4 - dir, 2, 12, nozzle_bmp);
+          if (PAGE_CONTAINS(20, 20)) u8g_ptr->drawBitmapP(nozzle + 0, 20, 3, 1, offset_bedline_bmp);
 
           // Draw cw/ccw indicator and up/down arrows.
           if (PAGE_CONTAINS(47, 62)) {
-            u8g.drawBitmapP(left  + 0, 47, 3, 16, rot_down);
-            u8g.drawBitmapP(right + 0, 47, 3, 16, rot_up);
-            u8g.drawBitmapP(right + 20, 48 - dir, 2, 13, up_arrow_bmp);
-            u8g.drawBitmapP(left  + 20, 49 - dir, 2, 13, down_arrow_bmp);
+            u8g_ptr->drawBitmapP(left  + 0, 47, 3, 16, rot_down);
+            u8g_ptr->drawBitmapP(right + 0, 47, 3, 16, rot_up);
+            u8g_ptr->drawBitmapP(right + 20, 48 - dir, 2, 13, up_arrow_bmp);
+            u8g_ptr->drawBitmapP(left  + 20, 49 - dir, 2, 13, down_arrow_bmp);
           }
         }
       #endif // BABYSTEP_ZPROBE_GFX_OVERLAY
@@ -1419,11 +1405,6 @@ void kill_screen(const char* lcd_msg) {
     //
     #if FAN_COUNT > 0
       #if HAS_FAN0
-        #if FAN_COUNT > 1
-          #define MSG_1ST_FAN_SPEED msg_fan_speed() " 1"
-        #else
-          #define MSG_1ST_FAN_SPEED msg_fan_speed()
-        #endif
         MENU_MULTIPLIER_ITEM_EDIT(int3, msg_fan_speed(), &fanSpeeds[0], 0, 255);
       #endif
       #if HAS_FAN1
@@ -3333,24 +3314,37 @@ static void lcd_autohome()
     * "Language" submenu
     *
     */
+  FORCE_INLINE void lcd_update_after_lang_change()
+  {
+    delay(100);
+    lcd_setstatus(lcd_status_message, true);
+    lcd_update();
+    lcd_select_language_menu();
+  }
+
   void lcd_english()
   {
-    set_select_font_index0_to_eeprom();
-    delay(300);
-    reboot();
+    if (get_current_language() != ENGLISH)
+    {
+      language_write(ENGLISH);
+      lcd_update_after_lang_change();
+    }
   }
 
   void lcd_ukrainian()
   {
-    set_select_font_index1_to_eeprom();
-    delay(300);
-    reboot();
+    if (get_current_language() != UKRAINIAN)
+    {
+      language_write(UKRAINIAN);
+      lcd_update_after_lang_change();
+    }
   }
 
   static void lcd_select_language_menu()
   {
     START_MENU();
-    MENU_ITEM(back, msg_main(), lcd_main_menu);
+    
+    MENU_BACK(msg_main());
 
     MENU_ITEM(function, msg_english_lang(), lcd_english);
     MENU_ITEM(function, msg_ukrainian_lang(), lcd_ukrainian);
@@ -3451,11 +3445,6 @@ static void lcd_autohome()
     //
     #if FAN_COUNT > 0
       #if HAS_FAN0
-        #if FAN_COUNT > 1
-          #define MSG_1ST_FAN_SPEED MSG_FAN_SPEED " 1"
-        #else
-          #define MSG_1ST_FAN_SPEED MSG_FAN_SPEED
-        #endif
         MENU_MULTIPLIER_ITEM_EDIT(int3, msg_fan_speed(), &fanSpeeds[0], 0, 255);
       #endif
       #if HAS_FAN1
@@ -4705,7 +4694,7 @@ void lcd_update()
       if(checknum > 10)
       {
         lcd_sdcard_pause();
-        LCD_MESSAGEPGM("Err: Change Filament");
+        lcd_setstatusPGM(msg_err_change_filament());
         checknum = 0;
         sdcard_pause_check = true;
       }
@@ -4719,7 +4708,7 @@ void lcd_update()
       checkpause ++;
       if(checkpause > 10)
       {
-        LCD_MESSAGEPGM("Print paused");
+        lcd_setstatusPGM(msg_print_paused());
         sdcard_pause_check = true;
         checkpause = 0;
       }
@@ -4729,7 +4718,7 @@ void lcd_update()
       checknum ++;
       if(checknum > 10)
       {
-        LCD_MESSAGEPGM("Err: Change Filament");
+        lcd_setstatusPGM(msg_err_change_filament());
         checknum = 0;
         sdcard_pause_check = false;
       }
@@ -4951,13 +4940,13 @@ void lcd_update()
       #if ENABLED(DOGLCD)  // Changes due to different driver architecture of the DOGM display
         if (!drawing_screen) 
         {
-          u8g.firstPage();
+          u8g_ptr->firstPage();
           drawing_screen = 1;
         }
         lcd_setFont(FONT_MENU);
-        u8g.setColorIndex(1);
+        u8g_ptr->setColorIndex(1);
         CURRENTSCREEN();
-        if (drawing_screen && (drawing_screen = u8g.nextPage())) 
+        if (drawing_screen && (drawing_screen = u8g_ptr->nextPage())) 
         {
           NOLESS(max_display_update_time, millis() - ms);
           return;
@@ -5090,7 +5079,7 @@ void lcd_reset_alert_level() { lcd_status_message_level = 0; }
 
   void set_lcd_contrast(const uint16_t value) {
     lcd_contrast = constrain(value, LCD_CONTRAST_MIN, LCD_CONTRAST_MAX);
-    u8g.setContrast(lcd_contrast);
+    u8g_ptr->setContrast(lcd_contrast);
   }
 
 #endif
@@ -5256,18 +5245,12 @@ void lcd_reset_alert_level() { lcd_status_message_level = 0; }
     }
   }
 
-  #if (ENABLED(LCD_I2C_TYPE_MCP23017) || ENABLED(LCD_I2C_TYPE_MCP23008)) && ENABLED(DETECT_DEVICE)
-    bool lcd_detected() { return lcd.LcdDetected() == 1; }
-  #else
-    bool lcd_detected() { return true; }
-  #endif
+  bool lcd_detected() { return true; }
 
   #if ENABLED(AUTO_BED_LEVELING_UBL)
 
     void chirp_at_user() {
-      #if ENABLED(LCD_USE_I2C_BUZZER)
-        lcd.buzz(LCD_FEEDBACK_FREQUENCY_DURATION_MS, LCD_FEEDBACK_FREQUENCY_HZ);
-      #elif PIN_EXISTS(BEEPER)
+      #if PIN_EXISTS(BEEPER)
         buzzer.tone(LCD_FEEDBACK_FREQUENCY_DURATION_MS, LCD_FEEDBACK_FREQUENCY_HZ);
       #endif
     }

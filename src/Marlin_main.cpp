@@ -1200,7 +1200,7 @@ inline void get_serial_commands() {
             case 2:
             case 3:
               SERIAL_ERRORLNPGM(MSG_ERR_STOPPED);
-              LCD_MESSAGEPGM(MSG_STOPPED);
+              lcd_setstatusPGM(msg_stopped());
               break;
           }
         }
@@ -1286,7 +1286,7 @@ inline void get_serial_commands() {
           SERIAL_PROTOCOLLNPGM(MSG_FILE_PRINTED);
           card.printingHasFinished();
           #if ENABLED(PRINTER_EVENT_LEDS)
-            LCD_MESSAGEPGM(MSG_INFO_COMPLETED_PRINTS);
+            lcd_setstatusPGM(msg_info_completed_prints());
             set_led_color(0, 255, 0); // Green
             #if HAS_RESUME_CONTINUE
               enqueue_and_echo_commands_P(PSTR("M0")); // end of the queue!
@@ -2476,7 +2476,7 @@ static void clean_up_after_endstop_or_probe_move() {
     feedrate_mm_s = old_feedrate_mm_s;
 
     if (isnan(measured_z)) {
-      LCD_MESSAGEPGM(MSG_ERR_PROBING_FAILED);
+      lcd_setstatusPGM(msg_err_probing_failed());
       SERIAL_ERROR_START();
       SERIAL_ERRORLNPGM(MSG_ERR_PROBING_FAILED);
     }
@@ -3575,7 +3575,7 @@ inline void gcode_G4() {
 
   stepper.synchronize();
 
-  if (!lcd_hasstatus()) LCD_MESSAGEPGM(MSG_DWELL);
+  if (!lcd_hasstatus()) lcd_setstatusPGM(msg_dwell());
 
   dwell(dwell_ms);
 }
@@ -3875,7 +3875,7 @@ inline void gcode_G4() {
     // This can occur if the delta height (DELTA_HEIGHT + home_offset[Z_AXIS]) is
     // not set correctly.
     if (!(Endstops::endstop_hit_bits & (_BV(X_MAX) | _BV(Y_MAX) | _BV(Z_MAX)))) {
-      LCD_MESSAGEPGM(MSG_ERR_HOMING_FAILED);
+      lcd_setstatusPGM(msg_err_homing_failed());
       SERIAL_ERROR_START();
       SERIAL_ERRORLNPGM(MSG_ERR_HOMING_FAILED);
       return false;
@@ -3912,7 +3912,7 @@ inline void gcode_G4() {
 
     // Disallow Z homing if X or Y are unknown
     if (!axis_known_position[X_AXIS] || !axis_known_position[Y_AXIS]) {
-      LCD_MESSAGEPGM(MSG_ERR_Z_HOMING);
+      lcd_setstatusPGM(msg_err_z_homing());
       SERIAL_ECHO_START();
       SERIAL_ECHOLNPGM(MSG_ERR_Z_HOMING);
       return;
@@ -3951,7 +3951,7 @@ inline void gcode_G4() {
       HOMEAXIS(Z);
     }
     else {
-      LCD_MESSAGEPGM(MSG_ZPROBE_OUT);
+      lcd_setstatusPGM(msg_zprobe_out());
       SERIAL_ECHO_START();
       SERIAL_ECHOLNPGM(MSG_ZPROBE_OUT);
     }
@@ -6052,7 +6052,7 @@ inline void gcode_G92()
       if (!hasP && !hasS && args && *args)
         lcd_setstatus(args, true);
       else {
-        LCD_MESSAGEPGM(MSG_USERWAIT);
+        lcd_setstatusPGM(msg_userwait());
         #if ENABLED(LCD_PROGRESS_BAR) && PROGRESS_MSG_EXPIRE > 0
           dontExpireStatus();
         #endif
@@ -6081,7 +6081,7 @@ inline void gcode_G92()
       #if ENABLED(ULTIPANEL)
         if (lcd_detected()) {
           while (wait_for_user) idle();
-          IS_SD_PRINTING ? LCD_MESSAGEPGM(MSG_RESUMING) : LCD_MESSAGEPGM(WELCOME_MSG);
+          IS_SD_PRINTING ? lcd_setstatusPGM(msg_resuming()) : lcd_setstatusPGM(msg_welcome());
         }
       #else
         while (wait_for_user) idle();
@@ -6207,7 +6207,7 @@ inline void gcode_G92()
  * M17: Enable power on all stepper motors
  */
 inline void gcode_M17() {
-  LCD_MESSAGEPGM(MSG_NO_MOVE);
+  lcd_setstatusPGM(msg_no_move());
   enable_all_steppers();
 }
 
@@ -7371,7 +7371,7 @@ inline void gcode_M104()
       if (parser.value_celsius() <= (EXTRUDE_MINTEMP) / 2) 
       {
         print_job_timer.stop();
-        LCD_MESSAGEPGM(WELCOME_MSG);
+        lcd_setstatusPGM(msg_welcome());
       }
     #endif
 
@@ -7594,7 +7594,7 @@ inline void gcode_M109()
       if (parser.value_celsius() <= (EXTRUDE_MINTEMP) / 2) 
       {
         print_job_timer.stop();
-        LCD_MESSAGEPGM(WELCOME_MSG);
+        lcd_setstatusPGM(msg_welcome());
       }
       else
         print_job_timer.start();
@@ -7723,7 +7723,7 @@ inline void gcode_M109()
 
   if (wait_for_heatup) 
   {
-    LCD_MESSAGEPGM(MSG_HEATING_COMPLETE);
+    lcd_setstatusPGM(msg_heating_complete());
     #if ENABLED(PRINTER_EVENT_LEDS)
       #if ENABLED(RGB_LED) || ENABLED(BLINKM) || ENABLED(PCA9632) || ENABLED(RGBW_LED)
         set_led_color(LED_WHITE);
@@ -7756,7 +7756,7 @@ inline void gcode_M109()
   {
     if (DEBUGGING(DRYRUN)) return;
 
-    LCD_MESSAGEPGM(MSG_BED_HEATING);
+    lcd_setstatusPGM(msg_bed_heating());
     const bool no_wait_for_cooling = parser.seenval('S');
     if (no_wait_for_cooling || parser.seenval('R')) 
 	{
@@ -7876,7 +7876,7 @@ inline void gcode_M109()
 
     } while (wait_for_heatup && TEMP_BED_CONDITIONS);
 
-    if (wait_for_heatup) LCD_MESSAGEPGM(MSG_BED_DONE);
+    if (wait_for_heatup) lcd_setstatusPGM(msg_bed_done());
     #if DISABLED(BUSY_WHILE_HEATING)
       KEEPALIVE_STATE(IN_HANDLER);
     #endif
@@ -8066,7 +8066,7 @@ inline void gcode_M140() {
     powersupply_on = true;
 
     #if ENABLED(ULTIPANEL)
-      LCD_MESSAGEPGM(WELCOME_MSG);
+      lcd_setstatusPGM(msg_welcome());
     #endif
   }
 
@@ -9664,7 +9664,7 @@ void quickstop_stepper() {
     if (!err) {
       SYNC_PLAN_POSITION_KINEMATIC();
       report_current_position();
-      LCD_MESSAGEPGM(MSG_HOME_OFFSETS_APPLIED);
+      lcd_setstatusPGM(msg_home_offsets_applied());
       BUZZ(100, 659);
       BUZZ(100, 698);
     }
@@ -13264,7 +13264,7 @@ void manage_inactivity(bool ignore_stepper_queue/*=false*/) {
     if (!IS_SD_PRINTING && !READ(HOME_PIN)) {
       if (!homeDebounceCount) {
         enqueue_and_echo_commands_P(PSTR("G28"));
-        LCD_MESSAGEPGM(MSG_AUTO_HOME);
+        lcd_setstatusPGM(msg_auto_home());
       }
       if (homeDebounceCount < HOME_DEBOUNCE_DELAY)
         homeDebounceCount++;
@@ -13454,7 +13454,7 @@ void stop() {
     Stopped_gcode_LastN = gcode_LastN; // Save last g_code for restart
     SERIAL_ERROR_START();
     SERIAL_ERRORLNPGM(MSG_ERR_STOPPED);
-    LCD_MESSAGEPGM(MSG_STOPPED);
+    lcd_setstatusPGM(msg_stopped());
     safe_delay(350);       // allow enough time for messages to get out before stopping
     Running = false;
   }
@@ -13478,7 +13478,7 @@ void stop() {
     {
       SERIAL_PROTOCOLLN("Init power off infomation.");
       SERIAL_PROTOCOLLN("size: ");
-      SERIAL_PROTOCOLLN(sizeof(power_off_info));
+      SERIAL_PROTOCOLLN(String(sizeof(power_off_info)));
       strncpy_P(power_off_info.power_off_filename, PSTR("bin"), sizeof(power_off_info.power_off_filename) - 1);
       if (card.existPowerOffFile(power_off_info.power_off_filename)) 
       {

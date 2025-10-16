@@ -30,312 +30,313 @@
 #ifndef LANGUAGE_UK_H
 #define LANGUAGE_UK_H
 
-#define MAPPER_D0D1                // For Cyrillic
-#define DISPLAY_CHARSET_ISO10646_5
+#define MAPPER_D0D1 // For Cyrillic
 
-#define UK_WELCOME_MSG                         MACHINE_NAME _UxGT(" готовий.")
-#define UK_MSG_SD_INSERTED                     _UxGT("Картка вставлена")
-#define UK_MSG_SD_REMOVED                      _UxGT("Картка видалена")
-#define UK_MSG_LCD_ENDSTOPS                    _UxGT("Кінцевик") // Max length 8 characters
-#define UK_MSG_MAIN                            _UxGT("Меню")
-#define UK_MSG_AUTOSTART                       _UxGT("Автостарт")
-#define UK_MSG_DISABLE_STEPPERS                _UxGT("Вимк. двигуни")
-#define UK_MSG_AUTO_HOME                       _UxGT("Авто паркування")
-#define UK_MSG_AUTO_HOME_X                     _UxGT("Паркування X")
-#define UK_MSG_AUTO_HOME_Y                     _UxGT("Паркування Y")
-#define UK_MSG_AUTO_HOME_Z                     _UxGT("Паркування Z")
-#define UK_MSG_LEVEL_BED_HOMING                _UxGT("Паркування XYZ")
-#define UK_MSG_LEVEL_BED_WAITING               _UxGT("Почати")
-#define UK_MSG_LEVEL_BED_NEXT_POINT            _UxGT("Слідуюча Точка")
-#define UK_MSG_LEVEL_BED_DONE                  _UxGT("Завершено!")
-#define UK_MSG_SET_HOME_OFFSETS                _UxGT("Зберегти паркув.")
-#define UK_MSG_HOME_OFFSETS_APPLIED            _UxGT("Зміщення застос.")
-#define UK_MSG_SET_ORIGIN                      _UxGT("Встанов. початок")
-#define UK_MSG_PREHEAT_1                       _UxGT("Нагрів PLA")
-#define UK_MSG_PREHEAT_1_N                     UK_MSG_PREHEAT_1 _UxGT(" ")
-#define UK_MSG_PREHEAT_1_ALL                   UK_MSG_PREHEAT_1 _UxGT(" Все")
-#define UK_MSG_PREHEAT_1_BEDONLY               UK_MSG_PREHEAT_1 _UxGT(" Стіл")
-#define UK_MSG_PREHEAT_1_SETTINGS              UK_MSG_PREHEAT_1 _UxGT(" нал.")
-#define UK_MSG_PREHEAT_2                       _UxGT("Нагрів ABS")
-#define UK_MSG_PREHEAT_2_N                     UK_MSG_PREHEAT_2 _UxGT(" ")
-#define UK_MSG_PREHEAT_2_ALL                   UK_MSG_PREHEAT_2 _UxGT(" Все")
-#define UK_MSG_PREHEAT_2_BEDONLY               UK_MSG_PREHEAT_2 _UxGT(" Стіл")
-#define UK_MSG_PREHEAT_2_SETTINGS              UK_MSG_PREHEAT_2 _UxGT(" нал.")
-#define UK_MSG_COOLDOWN                        _UxGT("Охолодження")
-#define UK_MSG_SWITCH_PS_ON                    _UxGT("Увімкнути живлення")
-#define UK_MSG_SWITCH_PS_OFF                   _UxGT("Вимкнути живлення")
-#define UK_MSG_EXTRUDE                         _UxGT("Екструзія")
-#define UK_MSG_RETRACT                         _UxGT("Втягування")
-#define UK_MSG_MOVE_AXIS                       _UxGT("Рух по осям")
-#define UK_MSG_BED_LEVELING                    _UxGT("Нівелювання столу")
-#define UK_MSG_LEVEL_BED                       _UxGT("Нівелювання столу")
-#define UK_MSG_MOVE_X                          _UxGT("Рух по X")
-#define UK_MSG_MOVE_Y                          _UxGT("Рух по Y")
-#define UK_MSG_MOVE_Z                          _UxGT("Рух по Z")
-#define UK_MSG_MOVE_E                          _UxGT("Екструдер")
-#define UK_MSG_MOVE_01MM                       _UxGT("Рух по 0.1mm")
-#define UK_MSG_MOVE_1MM                        _UxGT("Рух по 1mm")
-#define UK_MSG_MOVE_10MM                       _UxGT("Рух по 10mm")
-#define UK_MSG_SPEED                           _UxGT("Швидкість")
-#define UK_MSG_BED_Z                           _UxGT("Z Столу")
-#define UK_MSG_NOZZLE                          _UxGT("Сопло")
-#define UK_MSG_BED                             _UxGT("Стіл")
-#define UK_MSG_FAN_SPEED                       _UxGT("Охолодж.")
-#define UK_MSG_FLOW                            _UxGT("Потік")
-#define UK_MSG_CONTROL                         _UxGT("Налаштування")
-#define UK_MSG_MIN                             _UxGT(" ") LCD_STR_THERMOMETER _UxGT(" Мін")
-#define UK_MSG_MAX                             _UxGT(" ") LCD_STR_THERMOMETER _UxGT(" Макс")
-#define UK_MSG_FACTOR                          _UxGT(" ") LCD_STR_THERMOMETER _UxGT(" Факт")
-#define UK_MSG_AUTOTEMP                        _UxGT("Автотемпер.")
-#define UK_MSG_ON                              _UxGT("Увімк.")
-#define UK_MSG_OFF                             _UxGT("Вимк. ")
-#define UK_MSG_PID_P                           _UxGT("PID-P")
-#define UK_MSG_PID_I                           _UxGT("PID-I")
-#define UK_MSG_PID_D                           _UxGT("PID-D")
-#define UK_MSG_PID_C                           _UxGT("PID-C")
-#define UK_MSG_SELECT                          _UxGT("Вибрати")
-#define UK_MSG_ACC                             _UxGT("Приск.")
-#define UK_MSG_JERK                            _UxGT("Ривок")
-#define UK_MSG_VX_JERK                         _UxGT("Vx-ривок")
-#define UK_MSG_VY_JERK                         _UxGT("Vy-ривок")
-#define UK_MSG_VZ_JERK                         _UxGT("Vz-ривок")
-#define UK_MSG_VE_JERK                         _UxGT("Ve-ривок")
-#define UK_MSG_VMAX                            _UxGT("Vмакс")
-#define UK_MSG_VMIN                            _UxGT("Vмін")
-#define UK_MSG_VTRAV_MIN                       _UxGT("Vруху мін")
-#define UK_MSG_AMAX                            _UxGT("Aмакс ")
-#define UK_MSG_A_RETRACT                       _UxGT("A-втягув.")
-#define UK_MSG_A_TRAVEL                        _UxGT("A-руху")
-#define UK_MSG_STEPS_PER_MM                    _UxGT("Кроків/мм")
-#define UK_MSG_XSTEPS                          _UxGT("Xкроків/мм")
-#define UK_MSG_YSTEPS                          _UxGT("Yкроків/мм")
-#define UK_MSG_ZSTEPS                          _UxGT("Zкроків/мм")
-#define UK_MSG_ESTEPS                          _UxGT("Eкроків/мм")
-#define UK_MSG_E1STEPS                         _UxGT("E1кроків/мм")
-#define UK_MSG_E2STEPS                         _UxGT("E2кроків/мм")
-#define UK_MSG_E3STEPS                         _UxGT("E3кроків/мм")
-#define UK_MSG_E4STEPS                         _UxGT("E4кроків/мм")
-#define UK_MSG_E5STEPS                         _UxGT("E5кроків/мм")
-#define UK_MSG_TEMPERATURE                     _UxGT("Температура")
-#define UK_MSG_MOTION                          _UxGT("Рух")
-#define UK_MSG_FILAMENT                        _UxGT("Волокно")
-#define UK_MSG_VOLUMETRIC_ENABLED              _UxGT("E в мм3")
-#define UK_MSG_FILAMENT_DIAM                   _UxGT("Діам. волок.")
-#define UK_MSG_CONTRAST                        _UxGT("контраст LCD")
-#define UK_MSG_STORE_EEPROM                    _UxGT("Зберегти в ПЗП")
-#define UK_MSG_LOAD_EEPROM                     _UxGT("Зчитати з ПЗП")
-#define UK_MSG_RESTORE_FAILSAFE                _UxGT("Відновити базові")
-#define UK_MSG_REFRESH                         _UxGT("Поновити")
-#define UK_MSG_WATCH                           _UxGT("Інформація")
-#define UK_MSG_PREPARE                         _UxGT("Підготувати")
-#define UK_MSG_TUNE                            _UxGT("Підлаштування")
-#define UK_MSG_PAUSE_PRINT                     _UxGT("Призупинити друк")
-#define UK_MSG_RESUME_PRINT                    _UxGT("Відновити друк")
-#define UK_MSG_STOP_PRINT                      _UxGT("Скасувати друк")
-#define UK_MSG_CARD_MENU                       _UxGT("Друкувати з SD")
-#define UK_MSG_NO_CARD                         _UxGT("Відсутня SD карт.")
-#define UK_MSG_DWELL                           _UxGT("Сплячка...")
-#define UK_MSG_USERWAIT                        _UxGT("Очікування дій...")
-#define UK_MSG_RESUMING                        _UxGT("Відновлення друку")
-#define UK_MSG_PRINT_ABORTED                   _UxGT("Друк скасовано")
-#define UK_MSG_NO_MOVE                         _UxGT("Немає руху.")
-#define UK_MSG_KILLED                          _UxGT("ПЕРЕРВАНО. ")
-#define UK_MSG_STOPPED                         _UxGT("ЗУПИНЕНО. ")
-#define UK_MSG_FILAMENTCHANGE                  _UxGT("Зміна волокна")
-#define UK_MSG_INIT_SDCARD                     _UxGT("Старт SD картки")
-#define UK_MSG_CNG_SDCARD                      _UxGT("Заміна SD карти")
-#define UK_MSG_ZPROBE_OUT                      _UxGT("Z дет. не в межах")
-#define UK_MSG_BLTOUCH_SELFTEST                _UxGT("BLTouch Само-Тест")
-#define UK_MSG_BLTOUCH_RESET                   _UxGT("Скинути BLTouch")
-#define UK_MSG_HOME                            _UxGT("Дім")  // Used as UK_MSG_HOME " " UK_MSG_X UK_MSG_Y UK_MSG_Z " " UK_MSG_FIRST
-#define UK_MSG_FIRST                           _UxGT("перший")
-#define UK_MSG_ZPROBE_ZOFFSET                  _UxGT("Зміщення Z")
-#define UK_MSG_BABYSTEP_X                      _UxGT("Мікрокрок X")
-#define UK_MSG_BABYSTEP_Y                      _UxGT("Мікрокрок Y")
-#define UK_MSG_BABYSTEP_Z                      _UxGT("Мікрокрок Z")
-#define UK_MSG_ENDSTOP_ABORT                   _UxGT("невдача кінцевика")
-#define UK_MSG_HEATING_FAILED_LCD              _UxGT("Невдалий нагрів")
-#define UK_MSG_THERMAL_RUNAWAY                 _UxGT("ЗБІЙ ТЕМПЕРАТУРИ")
-#define UK_MSG_ERR_Z_HOMING                    _UxGT("G28 Z Відмовлено")
-#define UK_MSG_HALTED                          _UxGT("ПРИНТЕР ЗУПИНЕНО")
-#define UK_MSG_PLEASE_RESET                    _UxGT("Перезавантажте")
-#define UK_MSG_SHORT_DAY                       _UxGT("д") // One character only
-#define UK_MSG_SHORT_HOUR                      _UxGT("г") // One character only
-#define UK_MSG_SHORT_MINUTE                    _UxGT("х") // One character only
-#define UK_MSG_HEATING                         _UxGT("Нагрівання...")
-#define UK_MSG_HEATING_COMPLETE                _UxGT("Нагріто.")
-#define UK_MSG_BED_HEATING                     _UxGT("Нагрівання столу.")
-#define UK_MSG_BED_DONE                        _UxGT("Стіл нагрітий.")
-#define UK_MSG_DELTA_CALIBRATE                 _UxGT("Калібр. Delta")
-#define UK_MSG_DELTA_CALIBRATE_X               _UxGT("Калібрування X")
-#define UK_MSG_DELTA_CALIBRATE_Y               _UxGT("Калібрування Y")
-#define UK_MSG_DELTA_CALIBRATE_Z               _UxGT("Калібрування Z")
-#define UK_MSG_DELTA_CALIBRATE_CENTER          _UxGT("Калібр. Центру")
+#define UK_WELCOME_MSG                         MACHINE_NAME " готовий."
+#define UK_MSG_SD_INSERTED                     "Картка вставлена"
+#define UK_MSG_SD_REMOVED                      "Картка видалена"
+#define UK_MSG_LCD_ENDSTOPS                    "Кінцевик" // Max length 8 characters
+#define UK_MSG_MAIN                            "Меню"
+#define UK_MSG_AUTOSTART                       "Автостарт"
+#define UK_MSG_DISABLE_STEPPERS                "Вимк. двигуни"
+#define UK_MSG_AUTO_HOME                       "Авто паркування"
+#define UK_MSG_AUTO_HOME_X                     "Паркування X"
+#define UK_MSG_AUTO_HOME_Y                     "Паркування Y"
+#define UK_MSG_AUTO_HOME_Z                     "Паркування Z"
+#define UK_MSG_LEVEL_BED_HOMING                "Паркування XYZ"
+#define UK_MSG_LEVEL_BED_WAITING               "Почати"
+#define UK_MSG_LEVEL_BED_NEXT_POINT            "Слідуюча Точка"
+#define UK_MSG_LEVEL_BED_DONE                  "Завершено!"
+#define UK_MSG_SET_HOME_OFFSETS                "Зберегти паркув."
+#define UK_MSG_HOME_OFFSETS_APPLIED            "Зміщення застос."
+#define UK_MSG_SET_ORIGIN                      "Встанов. початок"
+#define UK_MSG_PREHEAT_1                       "Нагрів PLA"
+#define UK_MSG_PREHEAT_1_N                     UK_MSG_PREHEAT_1 " "
+#define UK_MSG_PREHEAT_1_ALL                   UK_MSG_PREHEAT_1 " Все"
+#define UK_MSG_PREHEAT_1_BEDONLY               UK_MSG_PREHEAT_1 " Стіл"
+#define UK_MSG_PREHEAT_1_SETTINGS              UK_MSG_PREHEAT_1 " нал."
+#define UK_MSG_PREHEAT_2                       "Нагрів ABS"
+#define UK_MSG_PREHEAT_2_N                     UK_MSG_PREHEAT_2 " "
+#define UK_MSG_PREHEAT_2_ALL                   UK_MSG_PREHEAT_2 " Все"
+#define UK_MSG_PREHEAT_2_BEDONLY               UK_MSG_PREHEAT_2 " Стіл"
+#define UK_MSG_PREHEAT_2_SETTINGS              UK_MSG_PREHEAT_2 " нал."
+#define UK_MSG_COOLDOWN                        "Охолодження"
+#define UK_MSG_SWITCH_PS_ON                    "Увімкнути живлення"
+#define UK_MSG_SWITCH_PS_OFF                   "Вимкнути живлення"
+#define UK_MSG_EXTRUDE                         "Екструзія"
+#define UK_MSG_RETRACT                         "Втягування"
+#define UK_MSG_MOVE_AXIS                       "Рух по осям"
+#define UK_MSG_BED_LEVELING                    "Нівелювання столу"
+#define UK_MSG_LEVEL_BED                       "Нівелювання столу"
+#define UK_MSG_MOVE_X                          "Рух по X"
+#define UK_MSG_MOVE_Y                          "Рух по Y"
+#define UK_MSG_MOVE_Z                          "Рух по Z"
+#define UK_MSG_MOVE_E                          "Екструдер"
+#define UK_MSG_MOVE_01MM                       "Рух по 0.1mm"
+#define UK_MSG_MOVE_1MM                        "Рух по 1mm"
+#define UK_MSG_MOVE_10MM                       "Рух по 10mm"
+#define UK_MSG_SPEED                           "Швидкість"
+#define UK_MSG_BED_Z                           "Z Столу"
+#define UK_MSG_NOZZLE                          "Сопло"
+#define UK_MSG_BED                             "Стіл"
+#define UK_MSG_FAN_SPEED                       "Охолодж."
+#define UK_MSG_FLOW                            "Потік"
+#define UK_MSG_CONTROL                         "Налаштування"
+#define UK_MSG_MIN                             " " LCD_STR_THERMOMETER " Мін"
+#define UK_MSG_MAX                             " " LCD_STR_THERMOMETER " Макс"
+#define UK_MSG_FACTOR                          " " LCD_STR_THERMOMETER " Факт"
+#define UK_MSG_AUTOTEMP                        "Автотемпер."
+#define UK_MSG_ON                              "Увімк."
+#define UK_MSG_OFF                             "Вимк. "
+#define UK_MSG_PID_P                           "PID-P"
+#define UK_MSG_PID_I                           "PID-I"
+#define UK_MSG_PID_D                           "PID-D"
+#define UK_MSG_PID_C                           "PID-C"
+#define UK_MSG_SELECT                          "Вибрати"
+#define UK_MSG_ACC                             "Приск."
+#define UK_MSG_JERK                            "Ривок"
+#define UK_MSG_VX_JERK                         "Vx-ривок"
+#define UK_MSG_VY_JERK                         "Vy-ривок"
+#define UK_MSG_VZ_JERK                         "Vz-ривок"
+#define UK_MSG_VE_JERK                         "Ve-ривок"
+#define UK_MSG_VMAX                            "Vмакс"
+#define UK_MSG_VMIN                            "Vмін"
+#define UK_MSG_VTRAV_MIN                       "Vруху мін"
+#define UK_MSG_AMAX                            "Aмакс "
+#define UK_MSG_A_RETRACT                       "A-втягув."
+#define UK_MSG_A_TRAVEL                        "A-руху"
+#define UK_MSG_STEPS_PER_MM                    "Кроків/мм"
+#define UK_MSG_XSTEPS                          "Xкроків/мм"
+#define UK_MSG_YSTEPS                          "Yкроків/мм"
+#define UK_MSG_ZSTEPS                          "Zкроків/мм"
+#define UK_MSG_ESTEPS                          "Eкроків/мм"
+#define UK_MSG_E1STEPS                         "E1кроків/мм"
+#define UK_MSG_E2STEPS                         "E2кроків/мм"
+#define UK_MSG_E3STEPS                         "E3кроків/мм"
+#define UK_MSG_E4STEPS                         "E4кроків/мм"
+#define UK_MSG_E5STEPS                         "E5кроків/мм"
+#define UK_MSG_TEMPERATURE                     "Температура"
+#define UK_MSG_MOTION                          "Рух"
+#define UK_MSG_FILAMENT                        "Волокно"
+#define UK_MSG_VOLUMETRIC_ENABLED              "E в мм3"
+#define UK_MSG_FILAMENT_DIAM                   "Діам. волок."
+#define UK_MSG_CONTRAST                        "контраст LCD"
+#define UK_MSG_STORE_EEPROM                    "Зберегти в ПЗП"
+#define UK_MSG_LOAD_EEPROM                     "Зчитати з ПЗП"
+#define UK_MSG_RESTORE_FAILSAFE                "Відновити базові"
+#define UK_MSG_REFRESH                         "Поновити"
+#define UK_MSG_WATCH                           "Інформація"
+#define UK_MSG_PREPARE                         "Підготувати"
+#define UK_MSG_TUNE                            "Підлаштування"
+#define UK_MSG_PAUSE_PRINT                     "Призупинити друк"
+#define UK_MSG_RESUME_PRINT                    "Відновити друк"
+#define UK_MSG_STOP_PRINT                      "Скасувати друк"
+#define UK_MSG_CARD_MENU                       "Друкувати з SD"
+#define UK_MSG_NO_CARD                         "Відсутня SD карт."
+#define UK_MSG_DWELL                           "Сплячка..."
+#define UK_MSG_USERWAIT                        "Очікування дій..."
+#define UK_MSG_RESUMING                        "Відновлення друку"
+#define UK_MSG_PRINT_ABORTED                   "Друк скасовано"
+#define UK_MSG_PRINT_PAUSED                    "Друк призупинено"
+#define UK_MSG_NO_MOVE                         "Немає руху."
+#define UK_MSG_KILLED                          "ПЕРЕРВАНО. "
+#define UK_MSG_STOPPED                         "ЗУПИНЕНО. "
+#define UK_MSG_FILAMENTCHANGE                  "Зміна волокна"
+#define UK_MSG_INIT_SDCARD                     "Старт SD картки"
+#define UK_MSG_CNG_SDCARD                      "Заміна SD карти"
+#define UK_MSG_ZPROBE_OUT                      "Z дет. не в межах"
+#define UK_MSG_BLTOUCH_SELFTEST                "BLTouch Само-Тест"
+#define UK_MSG_BLTOUCH_RESET                   "Скинути BLTouch"
+#define UK_MSG_HOME                            "Дім"  // Used as UK_MSG_HOME " " UK_MSG_X UK_MSG_Y UK_MSG_Z " " UK_MSG_FIRST
+#define UK_MSG_FIRST                           "перший"
+#define UK_MSG_ZPROBE_ZOFFSET                  "Зміщення Z"
+#define UK_MSG_BABYSTEP_X                      "Мікрокрок X"
+#define UK_MSG_BABYSTEP_Y                      "Мікрокрок Y"
+#define UK_MSG_BABYSTEP_Z                      "Мікрокрок Z"
+#define UK_MSG_ENDSTOP_ABORT                   "невдача кінцевика"
+#define UK_MSG_HEATING_FAILED_LCD              "Невдалий нагрів"
+#define UK_MSG_THERMAL_RUNAWAY                 "ЗБІЙ ТЕМПЕРАТУРИ"
+#define UK_MSG_HALTED                          "ПРИНТЕР ЗУПИНЕНО"
+#define UK_MSG_PLEASE_RESET                    "Перезавантажте"
+#define UK_MSG_SHORT_DAY                       "д" // One character only
+#define UK_MSG_SHORT_HOUR                      "г" // One character only
+#define UK_MSG_SHORT_MINUTE                    "х" // One character only
+#define UK_MSG_HEATING                         "Нагрівання..."
+#define UK_MSG_HEATING_COMPLETE                "Нагріто."
+#define UK_MSG_BED_HEATING                     "Нагрівання столу."
+#define UK_MSG_BED_DONE                        "Стіл нагрітий."
+#define UK_MSG_DELTA_CALIBRATE                 "Калібр. Delta"
+#define UK_MSG_DELTA_CALIBRATE_X               "Калібрування X"
+#define UK_MSG_DELTA_CALIBRATE_Y               "Калібрування Y"
+#define UK_MSG_DELTA_CALIBRATE_Z               "Калібрування Z"
+#define UK_MSG_DELTA_CALIBRATE_CENTER          "Калібр. Центру"
 
-#define UK_MSG_INFO_MENU                       _UxGT("Про принтер")
-#define UK_MSG_INFO_PRINTER_MENU               _UxGT("Інформація")
-#define UK_MSG_INFO_STATS_MENU                 _UxGT("Статистика")
-#define UK_MSG_INFO_BOARD_MENU                 _UxGT("Про плату")
-#define UK_MSG_INFO_THERMISTOR_MENU            _UxGT("Термістори")
-#define UK_MSG_INFO_EXTRUDERS                  _UxGT("Екструдери")
-#define UK_MSG_INFO_BAUDRATE                   _UxGT("біт/с")
-#define UK_MSG_INFO_PROTOCOL                   _UxGT("Протокол")
-#define UK_MSG_CASE_LIGHT                      _UxGT("Підсвітка")
+#define UK_MSG_INFO_MENU                       "Про принтер"
+#define UK_MSG_INFO_PRINTER_MENU               "Інформація"
+#define UK_MSG_INFO_STATS_MENU                 "Статистика"
+#define UK_MSG_INFO_BOARD_MENU                 "Про плату"
+#define UK_MSG_INFO_THERMISTOR_MENU            "Термістори"
+#define UK_MSG_INFO_EXTRUDERS                  "Екструдери"
+#define UK_MSG_INFO_BAUDRATE                   "біт/с"
+#define UK_MSG_INFO_PROTOCOL                   "Протокол"
+#define UK_MSG_CASE_LIGHT                      "Підсвітка"
 
 #if LCD_WIDTH >= 20
-  #define UK_MSG_INFO_PRINT_COUNT              _UxGT("К-сть друків")
-  #define UK_MSG_INFO_COMPLETED_PRINTS         _UxGT("Завершено")
-  #define UK_MSG_INFO_PRINT_TIME               _UxGT("Весь час друку")
-  #define UK_MSG_INFO_PRINT_LONGEST            _UxGT("Найдовший час")
-  #define UK_MSG_INFO_PRINT_FILAMENT           _UxGT("Екструдовано")
+  #define UK_MSG_INFO_PRINT_COUNT              "К-сть друків"
+  #define UK_MSG_INFO_COMPLETED_PRINTS         "Завершено"
+  #define UK_MSG_INFO_PRINT_TIME               "Весь час друку"
+  #define UK_MSG_INFO_PRINT_LONGEST            "Найдовший час"
+  #define UK_MSG_INFO_PRINT_FILAMENT           "Екструдовано"
 #else
-  #define UK_MSG_INFO_PRINT_COUNT              _UxGT("Друків")
-  #define UK_MSG_INFO_COMPLETED_PRINTS         _UxGT("Завершено")
-  #define UK_MSG_INFO_PRINT_TIME               _UxGT("Загалом")
-  #define UK_MSG_INFO_PRINT_LONGEST            _UxGT("Найдовший")
-  #define UK_MSG_INFO_PRINT_FILAMENT           _UxGT("Ексдруд.")
+  #define UK_MSG_INFO_PRINT_COUNT              "Друків"
+  #define UK_MSG_INFO_COMPLETED_PRINTS         "Завершено"
+  #define UK_MSG_INFO_PRINT_TIME               "Загалом"
+  #define UK_MSG_INFO_PRINT_LONGEST            "Найдовший"
+  #define UK_MSG_INFO_PRINT_FILAMENT           "Ексдруд."
 #endif
 
-#define UK_MSG_INFO_MIN_TEMP                   _UxGT("Мін Темп.")
-#define UK_MSG_INFO_MAX_TEMP                   _UxGT("Макс Темп.")
-#define UK_MSG_INFO_PSU                        _UxGT("Джерело жив.")
+#define UK_MSG_INFO_MIN_TEMP                   "Мін Темп."
+#define UK_MSG_INFO_MAX_TEMP                   "Макс Темп."
+#define UK_MSG_INFO_PSU                        "Джерело жив."
 
-#define UK_MSG_DRIVE_STRENGTH                  _UxGT("Сила мотору")
-#define UK_MSG_DAC_PERCENT                     _UxGT("% мотору")
-#define UK_MSG_DAC_EEPROM_WRITE                _UxGT("Запис ЦАП на ПЗП")
+#define UK_MSG_DRIVE_STRENGTH                  "Сила мотору"
+#define UK_MSG_DAC_PERCENT                     "% мотору"
+#define UK_MSG_DAC_EEPROM_WRITE                "Запис ЦАП на ПЗП"
 
-#define UK_MSG_FILAMENT_CHANGE_HEADER          _UxGT("PRINT PAUSED")
-#define UK_MSG_FILAMENT_CHANGE_OPTION_HEADER   _UxGT("RESUME OPTIONS:")
-#define UK_MSG_FILAMENT_CHANGE_OPTION_EXTRUDE  _UxGT("Екструдувати")
-#define UK_MSG_FILAMENT_CHANGE_OPTION_RESUME   _UxGT("Відновити друк")
+#define UK_MSG_FILAMENT_CHANGE_HEADER          "ДРУК ЗУПИНЕНО"
+#define UK_MSG_FILAMENT_CHANGE_OPTION_HEADER   "ПОДАЛЬШІ ОПЦІЇ:"
+#define UK_MSG_FILAMENT_CHANGE_OPTION_EXTRUDE  "Екструдувати"
+#define UK_MSG_FILAMENT_CHANGE_OPTION_RESUME   "Відновити друк"
 
 #if LCD_HEIGHT >= 4
   // Up to 3 lines allowed
-  #define UK_MSG_FILAMENT_CHANGE_INIT_1          _UxGT("Зачекайте на")
-  #define UK_MSG_FILAMENT_CHANGE_INIT_2          _UxGT("початок заміни")
-  #define UK_MSG_FILAMENT_CHANGE_INIT_3          _UxGT("волокна")
-  #define UK_MSG_FILAMENT_CHANGE_UNLOAD_1        _UxGT("Зачекайте на")
-  #define UK_MSG_FILAMENT_CHANGE_UNLOAD_2        _UxGT("вивід волокна")
-  #define UK_MSG_FILAMENT_CHANGE_INSERT_1        _UxGT("Вставте волокно")
-  #define UK_MSG_FILAMENT_CHANGE_INSERT_2        _UxGT("та натисніть для")
-  #define UK_MSG_FILAMENT_CHANGE_INSERT_3        _UxGT("продовження...")
-  #define UK_MSG_FILAMENT_CHANGE_LOAD_1          _UxGT("Зачекайте на")
-  #define UK_MSG_FILAMENT_CHANGE_LOAD_2          _UxGT("ввід волокна")
-  #define UK_MSG_FILAMENT_CHANGE_EXTRUDE_1       _UxGT("Зачекайте на")
-  #define UK_MSG_FILAMENT_CHANGE_EXTRUDE_2       _UxGT("екструзію")
-  #define UK_MSG_FILAMENT_CHANGE_EXTRUDE_3       _UxGT("волокна")
-  #define UK_MSG_FILAMENT_CHANGE_RESUME_1        _UxGT("Зачекайте на")
-  #define UK_MSG_FILAMENT_CHANGE_RESUME_2        _UxGT("відновлення")
-  #define UK_MSG_FILAMENT_CHANGE_RESUME_3        _UxGT("друку")
+  #define UK_MSG_FILAMENT_CHANGE_INIT_1          "Зачекайте на"
+  #define UK_MSG_FILAMENT_CHANGE_INIT_2          "початок заміни"
+  #define UK_MSG_FILAMENT_CHANGE_INIT_3          "волокна"
+  #define UK_MSG_FILAMENT_CHANGE_UNLOAD_1        "Зачекайте на"
+  #define UK_MSG_FILAMENT_CHANGE_UNLOAD_2        "вивід волокна"
+  #define UK_MSG_FILAMENT_CHANGE_INSERT_1        "Вставте волокно"
+  #define UK_MSG_FILAMENT_CHANGE_INSERT_2        "та натисніть для"
+  #define UK_MSG_FILAMENT_CHANGE_INSERT_3        "продовження..."
+  #define UK_MSG_FILAMENT_CHANGE_LOAD_1          "Зачекайте на"
+  #define UK_MSG_FILAMENT_CHANGE_LOAD_2          "ввід волокна"
+  #define UK_MSG_FILAMENT_CHANGE_EXTRUDE_1       "Зачекайте на"
+  #define UK_MSG_FILAMENT_CHANGE_EXTRUDE_2       "екструзію"
+  #define UK_MSG_FILAMENT_CHANGE_EXTRUDE_3       "волокна"
+  #define UK_MSG_FILAMENT_CHANGE_RESUME_1        "Зачекайте на"
+  #define UK_MSG_FILAMENT_CHANGE_RESUME_2        "відновлення"
+  #define UK_MSG_FILAMENT_CHANGE_RESUME_3        "друку"
 #else // LCD_HEIGHT < 4
   // Up to 2 lines allowed
-  #define UK_MSG_FILAMENT_CHANGE_INIT_1          _UxGT("Зачекайте...")
-  #define UK_MSG_FILAMENT_CHANGE_UNLOAD_1        _UxGT("Вивід...")
-  #define UK_MSG_FILAMENT_CHANGE_INSERT_1        _UxGT("Вставте і нат.")
-  #define UK_MSG_FILAMENT_CHANGE_LOAD_1          _UxGT("Ввід...")
-  #define UK_MSG_FILAMENT_CHANGE_EXTRUDE_1       _UxGT("Екструзія...")
-  #define UK_MSG_FILAMENT_CHANGE_RESUME_1        _UxGT("Відновлення...")
+  #define UK_MSG_FILAMENT_CHANGE_INIT_1          "Зачекайте..."
+  #define UK_MSG_FILAMENT_CHANGE_UNLOAD_1        "Вивід..."
+  #define UK_MSG_FILAMENT_CHANGE_INSERT_1        "Вставте і нат."
+  #define UK_MSG_FILAMENT_CHANGE_LOAD_1          "Ввід..."
+  #define UK_MSG_FILAMENT_CHANGE_EXTRUDE_1       "Екструзія..."
+  #define UK_MSG_FILAMENT_CHANGE_RESUME_1        "Відновлення..."
 #endif // LCD_HEIGHT < 4
 
-#define UK_MSG_SELECT_LANGUAGE                _UxGT("Мова")
-#define UK_MSG_ENGLISH_LANGUAGE               _UxGT("Англійська")
-#define UK_MSG_UKRAINIAN_LANGUAGE             _UxGT("Українська")
-#define UK_MSG_BACK                           _UxGT("Назад")
-#define UK_MSG_DEBUG_MENU                     _UxGT("Меню відладки")
-#define UK_MSG_PROGRESS_BAR_TEST              _UxGT("Тест лінії прогр.")
-#define UK_MSG_Z_FADE_HEIGHT                  _UxGT("Висота спаду")
-#define UK_MSG_PREHEAT_1_END UK_MSG_PREHEAT_1 _UxGT(" сопла")
-#define UK_MSG_PREHEAT_2_END UK_MSG_PREHEAT_1 _UxGT(" сопла")
-#define UK_MSG_LEVEL_CORNERS                  _UxGT("Вирівняти кути")
-#define UK_MSG_NEXT_CORNER                    _UxGT("Наступний кут")
-#define UK_MSG_USER_MENU                      _UxGT("Свої команди")
-#define UK_MSG_UBL_TOOLS                      _UxGT("Інструменти UBL")
-#define UK_MSG_UBL_LEVEL_BED                  _UxGT("Налаштування UBL")
-#define UK_MSG_UBL_MANUAL_MESH                _UxGT("Ручне введення сітки")
-#define UK_MSG_UBL_ACTIVATE_MESH              _UxGT("Активувати UBL")
-#define UK_MSG_UBL_DEACTIVATE_MESH            _UxGT("Деактивувати UBL")
-#define UK_MSG_UBL_SET_BED_TEMP               _UxGT("Задати температуру поверхні")
+#define UK_MSG_SELECT_LANGUAGE                "Мова"
+#define UK_MSG_ENGLISH_LANGUAGE               "Англійська"
+#define UK_MSG_UKRAINIAN_LANGUAGE             "Українська"
+#define UK_MSG_BACK                           "Назад"
+#define UK_MSG_DEBUG_MENU                     "Меню відладки"
+#define UK_MSG_PROGRESS_BAR_TEST              "Тест лінії прогр."
+#define UK_MSG_Z_FADE_HEIGHT                  "Висота спаду"
+#define UK_MSG_PREHEAT_1_END UK_MSG_PREHEAT_1 " сопла"
+#define UK_MSG_PREHEAT_2_END UK_MSG_PREHEAT_1 " сопла"
+#define UK_MSG_LEVEL_CORNERS                  "Вирівняти кути"
+#define UK_MSG_NEXT_CORNER                    "Наступний кут"
+#define UK_MSG_USER_MENU                      "Свої команди"
+#define UK_MSG_UBL_TOOLS                      "Інструменти UBL"
+#define UK_MSG_UBL_LEVEL_BED                  "Налаштування UBL"
+#define UK_MSG_UBL_MANUAL_MESH                "Ручне введення сітки"
+#define UK_MSG_UBL_ACTIVATE_MESH              "Активувати UBL"
+#define UK_MSG_UBL_DEACTIVATE_MESH            "Деактивувати UBL"
+#define UK_MSG_UBL_SET_BED_TEMP               "Задати температуру поверхні"
 #define UK_MSG_UBL_CUSTOM_BED_TEMP            MSG_UBL_SET_BED_TEMP
-#define UK_MSG_UBL_SET_HOTEND_TEMP            _UxGT("Задати температуру сопла")
+#define UK_MSG_UBL_SET_HOTEND_TEMP            "Задати температуру сопла"
 #define UK_MSG_UBL_CUSTOM_HOTEND_TEMP         UK_MSG_UBL_SET_HOTEND_TEMP
-#define UK_MSG_UBL_MESH_EDIT                  _UxGT("Редагування сітки")
-#define UK_MSG_UBL_BUILD_CUSTOM_MESH          _UxGT("Будувати свою сітку")
-#define UK_MSG_UBL_BUILD_MESH_MENU            _UxGT("Будувати сітку")
-#define UK_MSG_UBL_BUILD_PLA_MESH             _UxGT("Будув. сітку PLA")
-#define UK_MSG_UBL_BUILD_ABS_MESH             _UxGT("Будув. сітку ABS")
-#define UK_MSG_UBL_BUILD_COLD_MESH            _UxGT("Будув. холодну сітку")
-#define UK_MSG_UBL_MESH_HEIGHT_ADJUST         _UxGT("Встан.висоту сітки")
-#define UK_MSG_UBL_MESH_HEIGHT_AMOUNT         _UxGT("Висота сітки")
-#define UK_MSG_UBL_VALIDATE_MESH_MENU         _UxGT("Перевірити сітку")
-#define UK_MSG_UBL_VALIDATE_PLA_MESH          _UxGT("Перевірити сітку PLA")
-#define UK_MSG_UBL_VALIDATE_ABS_MESH          _UxGT("Перевірити сітку ABS")
-#define UK_MSG_UBL_VALIDATE_CUSTOM_MESH       _UxGT("Перевірити свою сітку")
-#define UK_MSG_UBL_CONTINUE_MESH              _UxGT("Продовжити сітку")
-#define UK_MSG_UBL_MESH_LEVELING              _UxGT("Вирівнювання сітки")
-#define UK_MSG_UBL_3POINT_MESH_LEVELING       _UxGT("3-точкове вирівн.")
-#define UK_MSG_UBL_GRID_MESH_LEVELING         _UxGT("Вирівнюв. растру")
-#define UK_MSG_UBL_MESH_LEVEL                 _UxGT("Вирівнювання сітки")
-#define UK_MSG_UBL_SIDE_POINTS                _UxGT("Крайні точки")
-#define UK_MSG_UBL_OUTPUT_MAP                 _UxGT("Вивести мапу сітки")
-#define UK_MSG_UBL_OUTPUT_MAP_HOST            _UxGT("Вивести на хост")
-#define UK_MSG_UBL_OUTPUT_MAP_CSV             _UxGT("Вивести в CSV")
-#define UK_MSG_UBL_OUTPUT_MAP_BACKUP          _UxGT("Зберегти зовні")
-#define UK_MSG_UBL_INFO_UBL                   _UxGT("Інформація по UBL")
-#define UK_MSG_UBL_EDIT_MESH_MENU             _UxGT("Редагувати сітку")
-#define UK_MSG_UBL_FILLIN_AMOUNT              _UxGT("Обсяг заповн.")
-#define UK_MSG_UBL_MANUAL_FILLIN              _UxGT("Ручне заповнення")
-#define UK_MSG_UBL_SMART_FILLIN               _UxGT("Розумне заповнення")
-#define UK_MSG_UBL_FILLIN_MESH                _UxGT("Заповнити сітку")
-#define UK_MSG_UBL_INVALIDATE_ALL             _UxGT("Анулювати все")
-#define UK_MSG_UBL_INVALIDATE_CLOSEST         _UxGT("Анулювати найближчу")
-#define UK_MSG_UBL_FINE_TUNE_ALL              _UxGT("Точно налашт. все")
-#define UK_MSG_UBL_FINE_TUNE_CLOSEST          _UxGT("Точно найближчу")
-#define UK_MSG_UBL_STORAGE_MESH_MENU          _UxGT("Збереження сітки")
-#define UK_MSG_UBL_STORAGE_SLOT               _UxGT("Слот пам'яті")
-#define UK_MSG_UBL_LOAD_MESH                  _UxGT("Завантажити сітку")
-#define UK_MSG_UBL_SAVE_MESH                  _UxGT("Зберегти сітку")
-#define UK_MSG_MESH_LOADED                    _UxGT("Сітка завантажена")
-#define UK_MSG_MESH_SAVED                     _UxGT("Сітка збережена")
-#define UK_MSG_NO_STORAGE                     _UxGT("Відсутнє місце")
-#define UK_MSG_UBL_STEP_BY_STEP_MENU          _UxGT("UBL покроково")
-#define UK_MSG_FREE_XY                        _UxGT("Звільнити XY")
-#define UK_MSG_FILAMENT_CHANGE_NOZZLE         _UxGT(" Сопло: ")
-#define UK_MSG_VELOCITY                       _UxGT("Швидкість")
-#define UK_MSG_ACCELERATION                   _UxGT("Прискорення")
-#define UK_MSG_ADVANCE_K                      _UxGT("Продвинути K")
-#define UK_MSG_INIT_EEPROM                    _UxGT("Ініціювати EEPROM")
-#define UK_MSG_CONTROL_RETRACT                _UxGT("Втягування, мм")
-#define UK_MSG_CONTROL_RETRACT_SWAP           _UxGT("Зміна втягув.,мм")
-#define UK_MSG_CONTROL_RETRACTF               _UxGT("Втягування V")
-#define UK_MSG_CONTROL_RETRACT_ZLIFT          _UxGT("Стрибок втягування")
-#define UK_MSG_CONTROL_RETRACT_RECOVER        _UxGT("Повернення V")
-#define UK_MSG_CONTROL_RETRACT_RECOVER_SWAP   _UxGT("Повер.зміни,мм")
-#define UK_MSG_CONTROL_RETRACT_RECOVERF       _UxGT("Повернення V")
-#define UK_MSG_AUTORETRACT                    _UxGT("Автовтягування")
-#define UK_MSG_BLTOUCH                        _UxGT("BLTouch")
-#define UK_MSG_BLTOUCH_DEPLOY                 _UxGT("Зкинути зонд")
-#define UK_MSG_BLTOUCH_STOW                   _UxGT("Підняти зонд")
-#define UK_MSG_BLTOUCH_SW_MODE                _UxGT("Режим SW")
-#define UK_MSG_BLTOUCH_5V_MODE                _UxGT("Режим 5V")
-#define UK_MSG_BLTOUCH_OD_MODE                _UxGT("Режим OD")
-#define UK_MSG_ERR_REDUNDANT_TEMP             _UxGT("ПОМИЛКА: надлишкова темп.")
-#define UK_MSG_ERR_MAXTEMP                    _UxGT("ПОМИЛКА: макс. темп.")
-#define UK_MSG_ERR_MINTEMP                    _UxGT("ПОМИЛКА: мін. темп.")
-#define UK_MSG_ERR_MAXTEMP_BED                _UxGT("ПОМИЛКА: макс. темп. поверхні")
-#define UK_MSG_DELTA_SETTINGS                 _UxGT("Налаштування дельти")
-#define UK_MSG_DELTA_AUTO_CALIBRATE           _UxGT("Автокалібрування")
-#define UK_MSG_DELTA_HEIGHT_CALIBRATE         _UxGT("Виставити висоту дельти")
-#define UK_MSG_DELTA_DIAG_ROG                 _UxGT("Діаг. стержень")
-#define UK_MSG_DELTA_HEIGHT                   _UxGT("Висота")
-#define UK_MSG_DELTA_RADIUS                   _UxGT("Радіус")
-#define UK_MSG_3POINT_LEVELING                _UxGT("Вирівнювання по 3 точках")
-#define UK_MSG_LINEAR_LEVELING                _UxGT("Лінійне вирівнювання")
-#define UK_MSG_BILINEAR_LEVELING              _UxGT("Білінійне вирівнювання")
-#define UK_MSG_UBL_LEVELING                   _UxGT("Об'єднане вирівн. поверхні")
-#define UK_MSG_MESH_LEVELING                  _UxGT("Вирівнювання сітки")
-#define UK_MSG_CASE_LIGHT_BRIGHTNESS          _UxGT("Яскравість світла")
-#define UK_MSG_FILAMENT_CHANGE_MINTEMP        _UxGT("Мін. температура ")
-#define UK_MSG_POWER_LOSS_RECOVERY            _UxGT("Втрата живл., відновити?")
-
-
+#define UK_MSG_UBL_MESH_EDIT                  "Редагування сітки"
+#define UK_MSG_UBL_BUILD_CUSTOM_MESH          "Будувати свою сітку"
+#define UK_MSG_UBL_BUILD_MESH_MENU            "Будувати сітку"
+#define UK_MSG_UBL_BUILD_PLA_MESH             "Будув. сітку PLA"
+#define UK_MSG_UBL_BUILD_ABS_MESH             "Будув. сітку ABS"
+#define UK_MSG_UBL_BUILD_COLD_MESH            "Будув. холодну сітку"
+#define UK_MSG_UBL_MESH_HEIGHT_ADJUST         "Встан.висоту сітки"
+#define UK_MSG_UBL_MESH_HEIGHT_AMOUNT         "Висота сітки"
+#define UK_MSG_UBL_VALIDATE_MESH_MENU         "Перевірити сітку"
+#define UK_MSG_UBL_VALIDATE_PLA_MESH          "Перевірити сітку PLA"
+#define UK_MSG_UBL_VALIDATE_ABS_MESH          "Перевірити сітку ABS"
+#define UK_MSG_UBL_VALIDATE_CUSTOM_MESH       "Перевірити свою сітку"
+#define UK_MSG_UBL_CONTINUE_MESH              "Продовжити сітку"
+#define UK_MSG_UBL_MESH_LEVELING              "Вирівнювання сітки"
+#define UK_MSG_UBL_3POINT_MESH_LEVELING       "3-точкове вирівн."
+#define UK_MSG_UBL_GRID_MESH_LEVELING         "Вирівнюв. растру"
+#define UK_MSG_UBL_MESH_LEVEL                 "Вирівнювання сітки"
+#define UK_MSG_UBL_SIDE_POINTS                "Крайні точки"
+#define UK_MSG_UBL_OUTPUT_MAP                 "Вивести мапу сітки"
+#define UK_MSG_UBL_OUTPUT_MAP_HOST            "Вивести на хост"
+#define UK_MSG_UBL_OUTPUT_MAP_CSV             "Вивести в CSV"
+#define UK_MSG_UBL_OUTPUT_MAP_BACKUP          "Зберегти зовні"
+#define UK_MSG_UBL_INFO_UBL                   "Інформація по UBL"
+#define UK_MSG_UBL_EDIT_MESH_MENU             "Редагувати сітку"
+#define UK_MSG_UBL_FILLIN_AMOUNT              "Обсяг заповн."
+#define UK_MSG_UBL_MANUAL_FILLIN              "Ручне заповнення"
+#define UK_MSG_UBL_SMART_FILLIN               "Розумне заповнення"
+#define UK_MSG_UBL_FILLIN_MESH                "Заповнити сітку"
+#define UK_MSG_UBL_INVALIDATE_ALL             "Анулювати все"
+#define UK_MSG_UBL_INVALIDATE_CLOSEST         "Анулювати найближчу"
+#define UK_MSG_UBL_FINE_TUNE_ALL              "Точно налашт. все"
+#define UK_MSG_UBL_FINE_TUNE_CLOSEST          "Точно найближчу"
+#define UK_MSG_UBL_STORAGE_MESH_MENU          "Збереження сітки"
+#define UK_MSG_UBL_STORAGE_SLOT               "Слот пам'яті"
+#define UK_MSG_UBL_LOAD_MESH                  "Завантажити сітку"
+#define UK_MSG_UBL_SAVE_MESH                  "Зберегти сітку"
+#define UK_MSG_MESH_LOADED                    "Сітка завантажена"
+#define UK_MSG_MESH_SAVED                     "Сітка збережена"
+#define UK_MSG_NO_STORAGE                     "Відсутнє місце"
+#define UK_MSG_UBL_STEP_BY_STEP_MENU          "UBL покроково"
+#define UK_MSG_FREE_XY                        "Звільнити XY"
+#define UK_MSG_FILAMENT_CHANGE_NOZZLE         " Сопло: "
+#define UK_MSG_VELOCITY                       "Швидкість"
+#define UK_MSG_ACCELERATION                   "Прискорення"
+#define UK_MSG_ADVANCE_K                      "Продвинути K"
+#define UK_MSG_INIT_EEPROM                    "Ініціювати EEPROM"
+#define UK_MSG_CONTROL_RETRACT                "Втягування, мм"
+#define UK_MSG_CONTROL_RETRACT_SWAP           "Зміна втягув.,мм"
+#define UK_MSG_CONTROL_RETRACTF               "Втягування V"
+#define UK_MSG_CONTROL_RETRACT_ZLIFT          "Стрибок втягування"
+#define UK_MSG_CONTROL_RETRACT_RECOVER        "Повернення V"
+#define UK_MSG_CONTROL_RETRACT_RECOVER_SWAP   "Повер.зміни,мм"
+#define UK_MSG_CONTROL_RETRACT_RECOVERF       "Повернення V"
+#define UK_MSG_AUTORETRACT                    "Автовтягування"
+#define UK_MSG_BLTOUCH                        "BLTouch"
+#define UK_MSG_BLTOUCH_DEPLOY                 "Зкинути зонд"
+#define UK_MSG_BLTOUCH_STOW                   "Підняти зонд"
+#define UK_MSG_BLTOUCH_SW_MODE                "Режим SW"
+#define UK_MSG_BLTOUCH_5V_MODE                "Режим 5V"
+#define UK_MSG_BLTOUCH_OD_MODE                "Режим OD"
+#define UK_MSG_ERR_REDUNDANT_TEMP             "ПОМИЛКА: надлишкова темп."
+#define UK_MSG_ERR_MAXTEMP                    "ПОМИЛКА: макс. темп."
+#define UK_MSG_ERR_MINTEMP                    "ПОМИЛКА: мін. темп."
+#define UK_MSG_ERR_MAXTEMP_BED                "ПОМИЛКА: макс. темп. поверхні"
+#define UK_MSG_DELTA_SETTINGS                 "Налаштування дельти"
+#define UK_MSG_DELTA_AUTO_CALIBRATE           "Автокалібрування"
+#define UK_MSG_DELTA_HEIGHT_CALIBRATE         "Виставити висоту дельти"
+#define UK_MSG_DELTA_DIAG_ROG                 "Діаг. стержень"
+#define UK_MSG_DELTA_HEIGHT                   "Висота"
+#define UK_MSG_DELTA_RADIUS                   "Радіус"
+#define UK_MSG_3POINT_LEVELING                "Вирівнювання по 3 точках"
+#define UK_MSG_LINEAR_LEVELING                "Лінійне вирівнювання"
+#define UK_MSG_BILINEAR_LEVELING              "Білінійне вирівнювання"
+#define UK_MSG_UBL_LEVELING                   "Об'єднане вирівн. поверхні"
+#define UK_MSG_MESH_LEVELING                  "Вирівнювання сітки"
+#define UK_MSG_CASE_LIGHT_BRIGHTNESS          "Яскравість світла"
+#define UK_MSG_FILAMENT_CHANGE_MINTEMP        "Мін. температура "
+#define UK_MSG_POWER_LOSS_RECOVERY            "Втрата живл., відновити?"
+#define UK_MSG_ERR_CHANGE_FILAMENT            "Помилка: замініть волокно!"
+#define UK_MSG_ERR_PROBING_FAILED             "Помилка зондування"
+#define UK_MSG_ERR_HOMING_FAILED              "Помилка паркування"
+#define UK_MSG_ERR_Z_HOMING                   "Паркування Z заборонено"
 #endif // LANGUAGE_UK_H

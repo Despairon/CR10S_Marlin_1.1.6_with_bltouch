@@ -24,21 +24,7 @@
 #define LANGUAGE_H
 
 #include "MarlinConfig.h"
-
-#define _UxGT(a) a
-
-// Define SIMULATE_ROMFONT to see what is seen on the character based display defined in Configuration.h
-//#define SIMULATE_ROMFONT
-
-// Fallback if no language is set. DON'T CHANGE
-#ifndef LCD_LANGUAGE_EN
-  #define LCD_LANGUAGE_EN en
-#endif
-
-// For character-based LCD controllers (DISPLAY_CHARSET_HD44780)
-#define JAPANESE 1
-#define WESTERN  2
-#define CYRILLIC 3
+#include "multi_language.h"
 
 // NOTE: IF YOU CHANGE LANGUAGE FILES OR MERGE A FILE WITH CHANGES
 //
@@ -47,37 +33,8 @@
 // See also http://marlinfw.org/docs/development/lcd_language.html
 
 // Languages
-// an         Aragonese
-// bg         Bulgarian
-// ca         Catalan
-// cn         Chinese
-// cz         Czech
-// cz_utf8    Czech (UTF8)
-// de         German
-// el         Greek
-// el-gr      Greek (Greece)
 // en         English
-// es         Spanish
-// eu         Basque-Euskera
-// fi         Finnish
-// fr         French
-// gl         Galician
-// hr         Croatian
-// it         Italian
-// kana       Japanese
-// kana_utf8  Japanese (UTF8)
-// nl         Dutch
-// pl         Polish
-// pt         Portuguese
-// pt-br      Portuguese (Brazilian)
-// pt-br_utf8 Portuguese (Brazilian) (UTF8)
-// pt_utf8    Portuguese (UTF8)
-// ru         Russian
-// sk         Slovak (UTF8)
-// tr         Turkish
 // uk         Ukrainian
-// zh_CN      Chinese (Simplified)
-// zh_TW      Chinese (Taiwan)
 
 #ifdef DEFAULT_SOURCE_CODE_URL
   #undef  SOURCE_CODE_URL
@@ -102,10 +59,6 @@
   #undef  WEBSITE_URL
   #define WEBSITE_URL DEFAULT_WEBSITE_URL
 #endif
-
-// Common LCD messages
-
-  /* nothing here yet */
 
 // Common serial messages
 #define MSG_MARLIN "Marlin"
@@ -261,13 +214,6 @@
 #define MSG_DEBUG_COMMUNICATION             "COMMUNICATION"
 #define MSG_DEBUG_LEVELING                  "LEVELING"
 
-// LCD Menu Messages
-
-#define LANGUAGE_INCL_(M) STRINGIFY_(language_##M.h)
-#define LANGUAGE_INCL(M) LANGUAGE_INCL_(M)
-#define INCLUDE_LANGUAGE_EN LANGUAGE_INCL(en)
-#define INCLUDE_LANGUAGE_UK LANGUAGE_INCL(uk)
-
 // Never translate these strings
 #define MSG_X "X"
 #define MSG_Y "Y"
@@ -300,21 +246,5 @@
 #define MSG_DIAM_E5 " 5"
 #define MSG_EXTRUDE_MINTEMP " 170"
 #define MSG_BAUDRATE        ": 115200"
-
-#include INCLUDE_LANGUAGE_EN
-#include INCLUDE_LANGUAGE_UK
-
-#if DISABLED(SIMULATE_ROMFONT) \
- && DISABLED(DISPLAY_CHARSET_ISO10646_1) \
- && DISABLED(DISPLAY_CHARSET_ISO10646_5) \
- && DISABLED(DISPLAY_CHARSET_ISO10646_KANA) \
- && DISABLED(DISPLAY_CHARSET_ISO10646_GREEK) \
- && DISABLED(DISPLAY_CHARSET_ISO10646_CN) \
- && DISABLED(DISPLAY_CHARSET_ISO10646_TR) \
- && DISABLED(DISPLAY_CHARSET_ISO10646_PL) \
- && DISABLED(DISPLAY_CHARSET_ISO10646_CZ) \
- && DISABLED(DISPLAY_CHARSET_ISO10646_SK)
-  #define DISPLAY_CHARSET_ISO10646_1 // use the better font on full graphic displays.
-#endif
 
 #endif // __LANGUAGE_H
